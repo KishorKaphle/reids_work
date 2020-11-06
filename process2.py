@@ -22,13 +22,10 @@ class RedisWork:
         
         return self.get_redis().publish(self.channel_name, self.message)
 
+    def read_message(self):
+        return self.subscribe_channel().get_message()
+
 
 r = RedisWork('channel', 'Hello there!')
 r.publish_message()
-data = []
-with r.get_redis().monitor() as m:
-    for command in m.listen():
-        print(command['command'])
-        data.append(command['command'])
-        
-#print(data)
+r.read_message()
