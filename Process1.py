@@ -1,6 +1,5 @@
 import redis
-import threading
-
+import time
 
 class RedisWork:
 
@@ -22,10 +21,14 @@ class RedisWork:
         
         return self.get_redis().publish(self.channel_name, self.message)
 
-    def read_message(self):
-        return self.subscribe_channel().get_message()
 
 
-r = RedisWork('channel', 'Hello there!')
-r.publish_message()
-r.read_message()
+
+for i in range (10):
+    time.sleep(2)
+    r = RedisWork('channel', i)  
+    r.publish_message()
+    print(i)
+
+
+

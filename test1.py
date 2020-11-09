@@ -30,7 +30,7 @@ class RedisWork:
 
 for i in range (10):
     if random.choice([0,1]) == 1:
-        r = RedisWork('numbers', i)
+        r = RedisWork('channel', i)
         r.publish_message()
         print(i)
 

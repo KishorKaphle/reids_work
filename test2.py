@@ -31,7 +31,7 @@ class RedisWork:
 
 for i in range (10):
     time.sleep(2)
-    r = RedisWork('channel1', i)  
+    r = RedisWork('channel', i)  
     r.publish_message()
     print(i)
 
